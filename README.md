@@ -12,6 +12,7 @@ The [`41-nitrokey.rules`][] file contains udev rules for these devices:
 - Nitrokey HSM
 - Nitrokey FIDO U2F
 - Nitrokey FIDO2
+- Nitrokey Passkey
 - Nitrokey Pro
 - Nitrokey Storage
 - Nitrokey Start

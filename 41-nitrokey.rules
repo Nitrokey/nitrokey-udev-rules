@@ -19,6 +19,10 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct
 KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42dd", TAG+="uaccess"
 # Nitrokey 3A Mini Bootloader
 ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42e8", TAG+="uaccess"
+# Nitrokey Passkey
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42f3", TAG+="uaccess"
+# Nitrokey Passkey Bootloader
+ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42f4", TAG+="uaccess"
 
 LABEL="u2f_end"
 
