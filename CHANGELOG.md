@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## [v1.0.0][] (2024-01-29)
+
+[v1.0.0]: https://github.com/Nitrokey/nitrokey-udev-rules/releases/tag/v1.0.0
 
 - Import [`41-nitrokey.rules`][] from libnitrokey.
 - Add rules for the Nitrokey Passkey:
