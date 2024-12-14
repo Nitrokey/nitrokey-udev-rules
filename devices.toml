@@ -1,0 +1,89 @@
+[[u2f]]
+name = "Nitrokey U2F"
+vid = 0x2581
+pid = 0xf1d0
+hidraw = true
+
+[[u2f]]
+name = "Nitrokey FIDO U2F"
+vid = 0x20a0
+pid = 0x4287
+hidraw = true
+
+[[u2f]]
+name = "Nitrokey FIDO2"
+vid = 0x20a0
+pid = 0x42b1
+hidraw = true
+
+[[u2f]]
+name = "Nitrokey 3A Mini/3A NFC/3C NFC"
+vid = 0x20a0
+pid = 0x42b2
+hidraw = true
+
+[[u2f]]
+name = "Nitrokey 3A NFC Bootloader/3C NFC Bootloader"
+vid = 0x20a0
+pid = 0x42dd
+hidraw = true
+
+[[u2f]]
+name = "Nitrokey 3A Mini Bootloader"
+vid = 0x20a0
+pid = 0x42e8
+all = true
+
+[[u2f]]
+name = "Nitrokey Passkey"
+vid = 0x20a0
+pid = 0x42f3
+hidraw = true
+
+[[u2f]]
+name = "Nitrokey Passkey Bootloader"
+vid = 0x20a0
+pid = 0x42f4
+all = true
+
+[[ccid]]
+name = "CryptoStick 1.2"
+vid = 0x20a0
+pid = 0x4107
+gnupg = true
+
+[[ccid]]
+name = "Nitrokey Pro"
+vid = 0x20a0
+pid = 0x4108
+gnupg = true
+
+[[ccid]]
+name = "Nitrokey Pro Bootloader"
+vid = 0x20a0
+pid = 0x42b4
+all = true
+
+[[ccid]]
+name = "Nitrokey Storage"
+vid = 0x20a0
+pid = 0x4109
+gnupg = true
+
+[[ccid]]
+name = "Nitrokey Storage Bootloader"
+vid = 0x03eb
+pid = 0x2ff1
+all = true
+
+[[ccid]]
+name = "Nitrokey Start"
+vid = 0x20a0
+pid = 0x4211
+gnupg = true
+
+[[ccid]]
+name = "Nitrokey HSM"
+vid = 0x20a0
+pid = 0x4230
+gnupg = true

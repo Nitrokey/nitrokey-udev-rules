@@ -1,0 +1,30 @@
+name: Continuous integration
+on: [push, pull_request]
+
+jobs:
+  check:
+    name: Run checks
+    runs-on: ubuntu-latest
+    container: python:3.11
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          poetry install
+      - name: Run checks
+        run: make check PYRIGHT="poetry run pyright" RUFF="poetry run ruff"
+        
+  validate:
+    name: Validate rules
+    runs-on: ubuntu-latest
+    container: python:3.11
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Validate rules
+        run: |
+          cp 41-nitrokey.rules original
+          make generate
+          diff original 41-nitrokey.rules
