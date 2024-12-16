@@ -11,7 +11,7 @@ check:
 .PHONY: fix
 fix:
 	$(RUFF) check --fix
-	$(PYRIGHT) format
+	$(RUFF) format
 
 .PHONY: generate
 generate:

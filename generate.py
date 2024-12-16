@@ -10,7 +10,7 @@ class Device:
     name: str
     vid: int
     pid: int
-    hidraw: bool = False
+    hid: bool = False
     gnupg: bool = False
     all: bool = False
 
@@ -25,12 +25,13 @@ class Device:
             ("ATTRS{idProduct}", "==", f"{self.pid:04x}"),
         ]
         uaccess = [("TAG", "+=", "uaccess")]
-        if self.hidraw:
+        if self.hid:
             s += generate_rule(
                 [("KERNEL", "==", "hidraw*"), ("SUBSYSTEM", "==", "hidraw")]
                 + attrs_vid_pid
                 + uaccess
             )
+            s += generate_rule([("SUBSYSTEMS", "==", "usb")] + attrs_vid_pid + uaccess)
         if self.gnupg:
             s += generate_rule(
                 attr_vid_pid
