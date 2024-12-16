@@ -5,6 +5,7 @@
 - Remove symlink rule for the Nitrokey Storage.  Users are advised to use
   label- or UUID-based mounting or setup a a custom rule for their device
   instead.
+- Add rules for accessing HID devices with libusb.
 
 ## [v1.0.0][] (2024-01-29)
 
