@@ -95,12 +95,6 @@ def generate(u2f_devices: list[Device], ccid_devices: list[Device]) -> str:
 
     output = textwrap.dedent(header)
     output += "\n\n".join(sections)
-    # TODO: can we remove this?
-    output += textwrap.dedent("""
-
-        # Nitrokey Storage dev Entry
-        KERNEL=="sd?1", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="4109", SYMLINK+="nitrospace"
-    """)
     return output
 
 
