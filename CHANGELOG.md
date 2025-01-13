@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+-
+
+## [v1.1.0][] (2025-01-14)
+
+[v1.1.0]: https://github.com/Nitrokey/nitrokey-udev-rules/releases/tag/v1.1.0
+
 - Remove symlink rule for the Nitrokey Storage.  Users are advised to use
   label- or UUID-based mounting or setup a a custom rule for their device
   instead.
