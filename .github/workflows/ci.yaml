@@ -15,15 +15,24 @@ jobs:
           poetry install
       - name: Run checks
         run: make check PYRIGHT="poetry run pyright" RUFF="poetry run ruff"
+
+  verify:
+    name: Verify rules
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Verify rules
+        run: make verify
         
-  validate:
-    name: Validate rules
+  rebuild:
+    name: Rebuild rules
     runs-on: ubuntu-latest
     container: python:3.11
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Validate rules
+      - name: Rebuild rules
         run: |
           cp 41-nitrokey.rules original
           make generate

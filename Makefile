@@ -8,6 +8,10 @@ check:
 	$(RUFF) format --diff
 	$(PYRIGHT)
 
+.PHONY: verify
+verify:
+	udevadm verify 41-nitrokey.rules
+
 .PHONY: fix
 fix:
 	$(RUFF) check --fix
