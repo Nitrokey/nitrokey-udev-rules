@@ -5,5 +5,5 @@ package-mode = false
 python = "^3.11"
 
 [tool.poetry.group.dev.dependencies]
-pyright = "^1"
 ruff = "^0.8"
+ty = "==0.0.95"

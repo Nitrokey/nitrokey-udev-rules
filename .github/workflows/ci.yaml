@@ -14,7 +14,7 @@ jobs:
           pip install poetry
           poetry install
       - name: Run checks
-        run: make check PYRIGHT="poetry run pyright" RUFF="poetry run ruff"
+        run: make check RUFF="poetry run ruff" TY="poetry run ty"
 
   verify:
     name: Verify rules

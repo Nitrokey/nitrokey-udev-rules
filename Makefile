@@ -1,12 +1,12 @@
 PYTHON3 ?= python3
-PYRIGHT ?= pyright
+TY ?= ty
 RUFF ?= ruff
 
 .PHONY: check
 check:
 	$(RUFF) check
 	$(RUFF) format --diff
-	$(PYRIGHT)
+	$(TY) check
 
 .PHONY: verify
 verify:
