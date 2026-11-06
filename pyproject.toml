@@ -10,3 +10,16 @@ dev = [
 
 [tool.poetry]
 package-mode = false
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.format]
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint]
+select = ["ANN", "B", "C", "E", "F", "W", "I", "RUF100"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
