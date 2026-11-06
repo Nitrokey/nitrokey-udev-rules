@@ -1,3 +1,5 @@
+VERSION := "v1.1.1"
+
 PYTHON3 ?= python3
 TY ?= ty
 RUFF ?= ruff
@@ -19,4 +21,4 @@ fix:
 
 .PHONY: generate
 generate:
-	$(PYTHON3) generate.py devices.toml 41-nitrokey.rules
+	$(PYTHON3) generate.py $(VERSION) devices.toml 41-nitrokey.rules

@@ -1,5 +1,6 @@
 # Copyright (c) Nitrokey GmbH
 # SPDX-License-Identifier: CC0-1.0
+# nitrokey-udev-rules v1.1.1
 
 # Here rules in new style should be provided. Matching devices should be tagged with 'uaccess'.
 # File prefix number should be lower than 73, to be correctly processed by the Udev.

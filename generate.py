@@ -77,10 +77,11 @@ def generate_ccid(devices: list[Device]) -> str:
     return output
 
 
-def generate(u2f_devices: list[Device], ccid_devices: list[Device]) -> str:
-    header = """\
+def generate(version: str, u2f_devices: list[Device], ccid_devices: list[Device]) -> str:
+    header = f"""\
         # Copyright (c) Nitrokey GmbH
         # SPDX-License-Identifier: CC0-1.0
+        # nitrokey-udev-rules {version}
 
         # Here rules in new style should be provided. Matching devices should be tagged with 'uaccess'.
         # File prefix number should be lower than 73, to be correctly processed by the Udev.
@@ -99,7 +100,7 @@ def generate(u2f_devices: list[Device], ccid_devices: list[Device]) -> str:
     return output
 
 
-def run(input: str, output: str) -> None:
+def run(version: str, input: str, output: str) -> None:
     with open(input, "rb") as f:
         data = tomllib.load(f)
 
@@ -117,15 +118,16 @@ def run(input: str, output: str) -> None:
             assert isinstance(device, dict)
             ccid_devices.append(Device.from_dict(device))
 
-    rules = generate(u2f_devices, ccid_devices)
+    rules = generate(version, u2f_devices, ccid_devices)
     with open(output, "w") as f:
         f.write(rules)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("version")
     parser.add_argument("input")
     parser.add_argument("output")
 
     args = parser.parse_args()
-    run(args.input, args.output)
+    run(args.version, args.input, args.output)

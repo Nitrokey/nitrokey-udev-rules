@@ -4,6 +4,12 @@
 
 -
 
+## [v1.1.1][] (2026-11-06)
+
+[v1.1.1]: https://github.com/Nitrokey/nitrokey-udev-rules/releases/tag/v1.1.1
+
+- Add version information to rules file
+
 ## [v1.1.0][] (2025-01-14)
 
 [v1.1.0]: https://github.com/Nitrokey/nitrokey-udev-rules/releases/tag/v1.1.0
