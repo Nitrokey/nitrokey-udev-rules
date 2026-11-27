@@ -1,0 +1,56 @@
+# Copyright (c) Nitrokey GmbH
+# SPDX-License-Identifier: CC0-1.0
+# nitrokey-udev-rules v1.1.1 (plugdev)
+
+# Here rules in old style should be provided. Matching devices should be added to 'plugdev' group,
+# and with mode set to "0660".
+# File prefix number should be lower than 73, to be correctly processed by the Udev.
+# Recommended udev version: < 188.
+
+ACTION!="add|change", GOTO="u2f_end"
+
+# Nitrokey U2F
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="f1d0", MODE="0660", GROUP="plugdev"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="f1d0", MODE="0660", GROUP="plugdev"
+# Nitrokey FIDO U2F
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="4287", MODE="0660", GROUP="plugdev"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="4287", MODE="0660", GROUP="plugdev"
+# Nitrokey FIDO2
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42b1", MODE="0660", GROUP="plugdev"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42b1", MODE="0660", GROUP="plugdev"
+# Nitrokey 3A Mini/3A NFC/3C NFC
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42b2", MODE="0660", GROUP="plugdev"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42b2", MODE="0660", GROUP="plugdev"
+# Nitrokey 3A NFC Bootloader/3C NFC Bootloader
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42dd", MODE="0660", GROUP="plugdev"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42dd", MODE="0660", GROUP="plugdev"
+# Nitrokey 3A Mini Bootloader
+ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42e8", MODE="0660", GROUP="plugdev"
+# Nitrokey Passkey
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42f3", MODE="0660", GROUP="plugdev"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42f3", MODE="0660", GROUP="plugdev"
+# Nitrokey Passkey Bootloader
+ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42f4", MODE="0660", GROUP="plugdev"
+
+LABEL="u2f_end"
+
+
+SUBSYSTEM!="usb", GOTO="gnupg_rules_end"
+ACTION!="add", GOTO="gnupg_rules_end"
+
+# CryptoStick 1.2
+ATTR{idVendor}=="20a0", ATTR{idProduct}=="4107", ENV{ID_SMARTCARD_READER}="1", ENV{ID_SMARTCARD_READER_DRIVER}="gnupg", MODE="0660", GROUP="plugdev"
+# Nitrokey Pro
+ATTR{idVendor}=="20a0", ATTR{idProduct}=="4108", ENV{ID_SMARTCARD_READER}="1", ENV{ID_SMARTCARD_READER_DRIVER}="gnupg", MODE="0660", GROUP="plugdev"
+# Nitrokey Pro Bootloader
+ATTRS{idVendor}=="20a0", ATTRS{idProduct}=="42b4", MODE="0660", GROUP="plugdev"
+# Nitrokey Storage
+ATTR{idVendor}=="20a0", ATTR{idProduct}=="4109", ENV{ID_SMARTCARD_READER}="1", ENV{ID_SMARTCARD_READER_DRIVER}="gnupg", MODE="0660", GROUP="plugdev"
+# Nitrokey Storage Bootloader
+ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2ff1", MODE="0660", GROUP="plugdev"
+# Nitrokey Start
+ATTR{idVendor}=="20a0", ATTR{idProduct}=="4211", ENV{ID_SMARTCARD_READER}="1", ENV{ID_SMARTCARD_READER_DRIVER}="gnupg", MODE="0660", GROUP="plugdev"
+# Nitrokey HSM
+ATTR{idVendor}=="20a0", ATTR{idProduct}=="4230", ENV{ID_SMARTCARD_READER}="1", ENV{ID_SMARTCARD_READER_DRIVER}="gnupg", MODE="0660", GROUP="plugdev"
+
+LABEL="gnupg_rules_end"
