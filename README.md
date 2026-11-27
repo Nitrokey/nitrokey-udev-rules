@@ -2,12 +2,23 @@
 
 This repository contains udev rules for Nitrokey devices.
 Previously, these rules were maintained as a part of [libnitrokey][].
+Documentation for users is available on [docs.nitrokey.com][].
 
 [libnitrokey]: https://github.com/Nitrokey/libnitrokey
+[docs.nitrokey.com]: https://docs.nitrokey.com/software/nitropy/linux/udev
 
 ## Usage and Requirements
 
-The [`41-nitrokey.rules`][] file contains udev rules for these devices:
+This repository provides two udev rules files using different mechanisms:
+- [`41-nitrokey.rules`][] uses the `uaccess` mechanism to automatically grant permissions to all users that are logged in locally.
+  It should be used on most modern systems and requires systemd (>= 188) or eudev and elogind.
+- [`41-nitrokey-plugdev.rules`][] grants permissions to all users in the `plugdev` group.
+  It can be used on systems without systemd or elogind or for remote access.
+
+[`41-nitrokey.rules`]: ./41-nitrokey.rules
+[`41-nitrokey-plugdev.rules`]: ./41-nitrokey-plugdev.rules
+
+The files contain udev rules for these devices:
 - Nitrokey 3
 - Nitrokey HSM
 - Nitrokey FIDO U2F
@@ -17,18 +28,6 @@ The [`41-nitrokey.rules`][] file contains udev rules for these devices:
 - Nitrokey Storage
 - Nitrokey Start
 - Nitrokey U2F
-
-[`41-nitrokey.rules`]: ./41-nitrokey.rules
-
-It requires udev 188 or later.
-For older udev versions, use the [`41-nitrokey_old.rules`][] from libnitrokey.
-
-[`41-nitrokey_old.rules`]: https://github.com/Nitrokey/libnitrokey/blob/master/data/41-nitrokey_old.rules
-
-The rules use the `uaccess` tag which is a systemd mechanism.
-
-To install the rules file, place it in `/etc/udev/rules.d`.
-The file prefix should be lower than 73 because the rules must be applied before udev’s `73-seat-late.rules`.
 
 ## Troubleshooting
 
@@ -56,7 +55,7 @@ Here, the line `user:robin:rw-` indicates that the user `robin` has access to th
 
 `uaccess` only grants access to local users.
 Remote users, for example via SSH, will not have access to the devices with these rules.
-If you want to allow remote users to use a device, you have to modify the rules and set the `MODE` or `OWNER` variables.
+If you want to allow remote users to use a device, you can use the `plugdev` rules or manually modify the provided rules.
 See [udev(7)][] for more information.
 
 [udev(7)]: https://www.freedesktop.org/software/systemd/man/latest/udev.html

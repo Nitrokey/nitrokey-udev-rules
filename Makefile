@@ -12,7 +12,7 @@ check:
 
 .PHONY: verify
 verify:
-	udevadm verify 41-nitrokey.rules
+	udevadm verify 41-nitrokey.rules 41-nitrokey-plugdev.rules
 
 .PHONY: fix
 fix:
@@ -21,4 +21,5 @@ fix:
 
 .PHONY: generate
 generate:
-	$(PYTHON3) generate.py $(VERSION) devices.toml 41-nitrokey.rules
+	$(PYTHON3) generate.py $(VERSION) devices.toml 41-nitrokey.rules --mode=uaccess
+	$(PYTHON3) generate.py $(VERSION) devices.toml 41-nitrokey-plugdev.rules --mode=plugdev

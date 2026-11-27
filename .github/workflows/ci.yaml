@@ -48,5 +48,7 @@ jobs:
       - name: Rebuild rules
         run: |
           cp 41-nitrokey.rules original
+          cp 41-nitrokey-plugdev.rules original-plugdev
           make generate
           diff original 41-nitrokey.rules
+          diff original-plugdev 41-nitrokey-plugdev.rules

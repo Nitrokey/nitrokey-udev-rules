@@ -2,7 +2,7 @@
 
 ## Unreleased
 
--
+- Add `41-nitrokey-plugdev.rules` using the `plugdev` group for systems without systemd or elogind.
 
 ## [v1.1.1][] (2026-11-06)
 
